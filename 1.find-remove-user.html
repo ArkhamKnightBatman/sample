@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>find and remove the user</title>
+</head>
+<body>
+    <div id='rootHandle'>
+
+
+    </div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.js"></script>
+    <script type="text/babel">
+
+        class Users extends React.Component{
+            constructor(){
+                super()
+                this.state = {
+                    users :[
+                        {id:1 , name:'Aashay'},
+                        {id:2 , name:'Roshan'},
+                        {id:3 , name:'Raghavan'},
+                        {id:4 , name:'Saumya'},
+                        {id:5 , name:'Yusuf'},
+                    ]
+                }
+                this.findUser = this.findUser.bind(this)
+                this.onChange = this.onChange.bind(this)
+            }
+            findUser(){
+                console.log('find user clicked !')
+
+            }
+            onChange(){
+                this.setState({value : this.state.value})
+                console.log('value :',this.state.value)
+            }
+            render(){
+                return(
+                    <div>
+                        <h2>Users :</h2>
+                        <ul>
+                            {
+                                this.state.users.map(user => <li key={user.id}>{user.name}</li>)
+                            }
+                        </ul>
+                        <input type='text' value={this.state.value} onChange={this.handleChange}/><button onClick={this.findUser}>Find Me</button>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Users/>,rootHandle)
+    </script>
+</body>
+</html>
